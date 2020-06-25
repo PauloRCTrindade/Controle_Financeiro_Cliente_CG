@@ -1,0 +1,52 @@
+<div class="item">
+  <div>
+    <input 
+    type="text" 
+    name="link_foto"
+    placeholder="link para foto"
+    value={{membro.link_foto}}>
+  </div>
+  </div>
+
+  <div class="item">
+    <div>Membro</div>
+    <div>
+      <input type="text" 
+      name="nome"
+      placeholder="Digite o nome completo"
+      value="{{membro.nome}}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Data de nascimento</div>
+    <div>
+      <input type="date" 
+      name="idade"
+      value="{{membro.idade}}">
+    </div>
+  </div>
+
+  <div class="item">
+    <div>Sexo</div>
+    <div>
+      <span>
+        <input type="radio" 
+        name="genero"
+        value="M"
+        {% if membro.genero == "M" %}
+        checked
+        {% endif %}>Masculino
+      </span>
+      <span>
+        <input type="radio" 
+        name="genero"
+        value="F" 
+        {% if membro.genero =="F" %}
+        checked
+        {% endif %}>Femnino
+      </span>
+    </div>
+  </div>
+
+  
