@@ -4,16 +4,18 @@ const membro = require('./membros')
 
 
 routes.get('/',function(req,res){
-  return res.redirect('/membros')
+  return res.redirect('/home')
 })
 
 routes.get('/membros',membro.post)
 
-routes.get('/membros/index',membro.index)
+routes.get('/home',membro.home)
 
 routes.get('/membros/:id',membro.show)
 
 routes.get('/membros/:id/edit',membro.edit)
+
+routes.get('/index',membro.membros)
 
 routes.post('/membros',membro.create)
 
