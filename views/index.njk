@@ -1,54 +1,5 @@
 {% extends "layout.njk" %}
+
 {% block content %}
-
-  <form class="card" method="POST" action="/membros">
-    <section class='avatar' style="background:url(https://images.unsplash.com/photo-1485808269728-77bb07c059a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60/500x500) no-repeat center center / cover"></section>
-
-      <section class="detalhes">
-        <h2 id='title-card'> Dados Pessoais</h2>
-        <div class="item">
-        <div>Nome</div>
-        <div></div>
-        </div>
-
-        <div class="item">
-          <div>Membro</div>
-          <div>
-            <input type="text" 
-            name="nome"
-            placeholder="Digite o nome completo">
-          </div>
-        </div>
-
-        <div class="item">
-          <div>Data de nascimento</div>
-          <div>
-            <input type="date" 
-            name="idade">
-          </div>
-        </div>
-
-        <div class="item">
-          <div>Sexo</div>
-          <div>
-            <span>
-              <input type="radio" 
-              name="genero"
-              value="M"
-              checked>Masculino
-            </span>
-            <span>
-              <input type="radio" name="genero"
-              value="F">Femnino
-            </span>
-          </div>
-        </div>
-
-        <button type="submit">Salvar</button>
-
-      </section>
-    
-  </form>
-    
 
 {% endblock content %}
