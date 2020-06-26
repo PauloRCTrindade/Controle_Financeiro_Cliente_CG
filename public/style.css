@@ -178,5 +178,64 @@ button[type="submit"], #botao-editar
  transition: 500ms;
   transform: scale(1.1);
 }
+/*=====Table=====*/
+.table-container{
+  display: block;
+  padding: 40px;
+  box-sizing: border-box;
+}
 
+.table-container table{
+  border-spacing: 0;
+}
+
+.table-container thead tr th{
+  text-align: left;
+}
+th{
+  text-transform: uppercase;
+  color: #777;
+  font-size: 14px;
+}
+td,th{
+  padding: 16px;
+  border-bottom: 1px solid rgb(167, 167, 167);
+}
+tbody tr:last-child td{
+  border-bottom: none;
+}
+tbody tr td:first-child{
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+tbody tr td:first-child span{
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 3px 1px 6px -2px rgb(0, 0, 0);
+  border: 2px solid rgb(253, 253, 253);
+}
+
+tbody tr td:last-child a{
+  background-color: var(--color-Global) ;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: aliceblue;
+  border-radius: 6px;
+}
+.table-container #ver:hover{
+  background-color: rgb(25, 108, 180);
+  transition: 500ms;
+}
+
+.table-container thead tr th:last-child,td:last-child{
+  text-align: center;
+}
 
