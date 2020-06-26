@@ -19,6 +19,10 @@ routes.get('/index',membro.membros)
 
 routes.post('/membros',membro.create)
 
+routes.get('/membros/:id/addvalor',membro.addvalor)
+routes.post('/addvalor',membro.postaddvalor)
+
+
 routes.put('/membros',membro.put)
 
 routes.delete('/membros',membro.delete)
