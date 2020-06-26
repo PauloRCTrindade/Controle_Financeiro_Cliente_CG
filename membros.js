@@ -21,11 +21,12 @@ exports.create = function(req,res){
     }
   }
 
-  let {nome, idade, genero,link_foto} = req.body
+  let {nome, idade, genero,link_foto,} = req.body
 
   idade = Date.parse(idade)
   const desde = Date.now()
   const id    = Number(data.membros.length + 1)
+  const valores = []
   
   data.membros.push({
     id,
@@ -33,7 +34,8 @@ exports.create = function(req,res){
     idade,
     genero,
     link_foto,
-    desde
+    desde,
+    valores
   })
   
   
@@ -104,7 +106,7 @@ exports.put = function(req,res){
     }
   })
 
-  if (!foundMembros) return res.send('Membro não encontrado kkkkk')
+  if (!foundMembros) return res.send('Membro não encontrado')
 
   const membro = {
     ...foundMembros,
@@ -136,5 +138,38 @@ exports.delete = function(req,res){
     if(err) return res.send('O Arquivo não foi deleteado')
     return res.redirect('/membros')
   })
+}
+
+exports.postaddvalor = function(req,res){
+  const {id} = req.body
+  let index = 0
+
+  const foundMembros = data.membros.find(function(membros,foundIndex){
+    if( id == membros.id){
+      index = foundIndex
+      return true
+    }
+  })
+
+  if (!foundMembros) return res.send('Membro não encontrado')
+
+  const membro = {
+    ...foundMembros,
+    ...req.body,
+    idade: Date.parse(req.body.idade),
+    id: Number(req.body.id)
+  }
+
+  data.membros[index] = membro
+
+  fs.writeFile("data.json", JSON.stringify(data,null,2),function(err){
+    if (err) return res.send("Dados não foram alterados")
+
+    return res.redirect(`/membros/${id}`)
+  })
+}
+
+exports.addvalor = function(req,res){
+  return res.render('addvalor')
 }
 
