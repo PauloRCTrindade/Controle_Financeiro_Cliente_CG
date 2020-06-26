@@ -1,0 +1,25 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+  <div class="card table-container">
+    <table width="100%">
+      <thead>
+        <tr>
+          <th>Membro</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for membro in membros %}
+        <tr>
+          <td>
+            <span style="background-image: url({{ membro.link_foto }})"></span> {{ membro.nome }}</td>
+          <td><a id="ver" href="/membros/{{membro.id}}">Ver</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+{% endblock content %}
