@@ -2,6 +2,10 @@ const fs    = require('fs')
 const data  = require('./data.json')
 const {age,date} = require('./utils')
 
+exports.membros = function(req,res){
+
+  return res.render('membros',{membros: data.membros})
+}
 //Create
 exports.create = function(req,res){
   const keys   = Object.keys(req.body)
@@ -44,7 +48,7 @@ exports.post = function(req,res){
   return res.render('create')
 }
 
-exports.index = function(req,res){
+exports.home = function(req,res){
   return res.render('index')
 }
 
@@ -105,7 +109,8 @@ exports.put = function(req,res){
   const membro = {
     ...foundMembros,
     ...req.body,
-    idade: Date.parse(req.body.idade)
+    idade: Date.parse(req.body.idade),
+    id: Number(req.body.id)
   }
 
   data.membros[index] = membro
@@ -132,3 +137,4 @@ exports.delete = function(req,res){
     return res.redirect('/membros')
   })
 }
+
