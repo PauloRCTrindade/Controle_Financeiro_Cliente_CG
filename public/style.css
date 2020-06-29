@@ -220,7 +220,8 @@ tbody tr td:first-child span{
   border: 2px solid rgb(253, 253, 253);
 }
 
-tbody tr td:last-child a{
+tbody tr td:last-child a,
+.table-container a{
   background-color: var(--color-Global) ;
   padding: 8px 16px;
   text-decoration: none;
@@ -230,6 +231,16 @@ tbody tr td:last-child a{
   color: aliceblue;
   border-radius: 6px;
 }
+
+.table-container #novo{
+  margin-bottom: 8px;
+  display: inline-block;
+  background-color: var(--color-Verde);
+}
+.table-container #novo:hover{
+  background-color: var(--color-verdeEscuto);
+}
+
 .table-container #ver:hover{
   background-color: rgb(25, 108, 180);
   transition: 500ms;
