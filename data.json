@@ -1,13 +1,3 @@
 {
-  "membros": [
-    {
-      "id": 3,
-      "nome": "Rafael",
-      "idade": 1286668800000,
-      "genero": "M",
-      "link_foto": "https://images.unsplash.com/photo-1528709024086-98a7672e0b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60/500x500",
-      "desde": 1593199789175,
-      "valores": []
-    }
-  ]
+  "membros": []
 }
