@@ -41,7 +41,7 @@ exports.create = function(req,res){
   
   fs.writeFile("data.json",JSON.stringify(data,null,2),function(err){
     if(err) return res.send('Erro ao gravar os dados')
-      return res.redirect('/membros')
+      return res.redirect('/create')
   })
   
 }
@@ -58,8 +58,8 @@ exports.show = function(req,res){
   const {id} = req.params
 
 
-  const foundMembros = data.membros.find(function(membros){
-    return membros.id == id
+  const foundMembros = data.membros.find(function(membro){
+    return membro.id == id
   })
 
   if (!foundMembros) return res.send('Membro não encontrado')
@@ -140,36 +140,4 @@ exports.delete = function(req,res){
   })
 }
 
-exports.postaddvalor = function(req,res){
-  const {id} = req.body
-  let index = 0
-
-  const foundMembros = data.membros.find(function(membros,foundIndex){
-    if( id == membros.id){
-      index = foundIndex
-      return true
-    }
-  })
-
-  if (!foundMembros) return res.send('Membro não encontrado')
-
-  const membro = {
-    ...foundMembros,
-    ...req.body,
-    idade: Date.parse(req.body.idade),
-    id: Number(req.body.id)
-  }
-
-  data.membros[index] = membro
-
-  fs.writeFile("data.json", JSON.stringify(data,null,2),function(err){
-    if (err) return res.send("Dados não foram alterados")
-
-    return res.redirect(`/membros/${id}`)
-  })
-}
-
-exports.addvalor = function(req,res){
-  return res.render('addvalor')
-}
 
