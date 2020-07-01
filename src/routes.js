@@ -4,12 +4,12 @@ const membro = require('./app/controllers/membros')
 
 
 routes.get('/',function(req,res){
-  return res.redirect('/membros')
+  return res.redirect('/home')
 })
 
-routes.get('/create',membro.post)
-routes.put('/create',membro.put)
-routes.post('/create',membro.create)
+routes.get('/create',membro.create)
+//routes.put('/create',membro.put)
+routes.post('/create',membro.post)
 routes.delete('/create',membro.delete)
 
 routes.get('/membros/:id',membro.show)
