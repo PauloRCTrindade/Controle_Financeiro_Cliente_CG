@@ -8,12 +8,12 @@ routes.get('/',function(req,res){
 })
 
 routes.get('/create',membro.create)
-//routes.put('/create',membro.put)
 routes.post('/create',membro.post)
 routes.delete('/create',membro.delete)
 
 routes.get('/membros/:id',membro.show)
 routes.get('/membros/:id/edit',membro.edit)
+routes.put('/mebros/:id',membro.put)
 
 routes.get('/membros',membro.membros)
 routes.get('/home',membro.home)
