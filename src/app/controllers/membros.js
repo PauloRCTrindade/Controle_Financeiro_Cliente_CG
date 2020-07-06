@@ -1,6 +1,5 @@
-const {age,date} = require('../../lib/utils')
-const db = require('../../config/db')
 const membro = require('../models/membro')
+const {age,date} = require('../../lib/utils')
 
 
 
@@ -33,29 +32,8 @@ module.exports = {
         return res.send('Somente o campo "Link para a foto" pode ficar vazio')
       }
     }
-    const query = `
-      INSERT INTO membros(
-        nome,
-        link_foto,
-        genero,
-        idade,
-        desde
-      )VALUES ($1, $2, $3, $4, $5)
-      RETURNING id
-      
-    `
-    const values = [
-      req.body.nome,
-      req.body.link_foto,
-      req.body.genero,
-      date(req.body.idade).iso,
-      date(Date.now()).iso
-    ]
-
-    db.query(query,values,function(err,results){
-      if(err) return res.send("Erro na base de dados")
-  
-      return res.redirect(`membros/${results.rows[0].id}`)
+    membro.create(req.body,function(membro) {
+      return res.redirect(`membros/${membro.id}`)
     })
 
 
@@ -66,7 +44,18 @@ module.exports = {
   },
 
   show(req,res){
-    return res.render('index')
+    membro.find(req.params.id,function(membro){
+      if(!membro) return res.send("Membro não encontrado")
+
+      membro.idade = age(membro.idade)
+      
+      membro.desde = date(membro.desde).format
+
+      return res.render("show", { membro })
+
+
+    })
+
   },
   edit(req,res){
     const keys   = Object.keys(req.body)
