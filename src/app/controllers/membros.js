@@ -58,6 +58,18 @@ module.exports = {
 
   },
   edit(req,res){
+    
+    membro.find(req.params.id,function(membro){
+      if(!membro) return res.send("Membro não encontrado")
+
+      membro.idade = date(membro.idade).iso
+
+      return res.render("edit",{ membro })
+
+    })
+  },
+
+  put(req,res){
     const keys   = Object.keys(req.body)
     const foto = 'https://images.unsplash.com/photo-1528709024086-98a7672e0b9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60/500x500'
     
@@ -70,8 +82,13 @@ module.exports = {
         return res.send('Somente o campo "Link para a foto" pode ficar vazio')
       }
     }
-    return
+    
+    membro.update(req.body, function(){
+      return res.redirect(`/membros/${req.body.id}`)
+    })
+
   },
+
   delete(req,res){
     return
   },
