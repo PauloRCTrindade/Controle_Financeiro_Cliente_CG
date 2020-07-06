@@ -24,7 +24,9 @@ module.exports = {
       mes,
       ano,
       iso:`${ano}-${mes}-${dia}`,
-      idade: `${dia}/${mes}`}
+      idade: `${dia}/${mes}`,
+      format: `${dia}/${mes}/${ano }`
+    }
   }
   
 }
