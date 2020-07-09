@@ -4,7 +4,7 @@ const { date } = require('../../lib/utils')
 module.exports = {
   all(callback){
     db.query(`SELECT * FROM membros`,function(err,results){
-      if(err) throw `Erro na base de dados ${err}`
+      if (err) throw `ERRO no Banco de Dados ${err}`
 
       callback(results.rows)
     })
@@ -31,7 +31,7 @@ module.exports = {
     ]
 
     db.query(query,values,function(err,results){
-      if(err) throw "Erro na base de dados"
+      if (err) throw `ERRO no Banco de Dados ${err}`
   
       callback(results.rows[0])
     })
@@ -68,8 +68,14 @@ module.exports = {
         callback()
 
     })
-      
-    
+  },
+  delete(id,callback){
+    db.query(`DELETE FROM membros WHERE id = $1`,[id], function(err,results){
+      if (err) throw `ERRO no Banco de Dados ${err}`
 
-  }
+      return callback()
+    })
+  },
+  
+  
 }
