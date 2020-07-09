@@ -2,11 +2,13 @@
 
 {% block content %}
 
-  <form class="card" method="POST" action="/addvalor">
+  <form class="card" method="POST" action="/membros/:id/addvalor">
     <section class='avatar' style="background:url(https://images.unsplash.com/photo-1485808269728-77bb07c059a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60/500x500) no-repeat center center / cover"></section>
 
       <section class="detalhes">
-        <h2 id='title-card'> Lançamentos</h2>
+        <h2 id='title-card'>{{membro.nome}}</h2>
+
+        
 
         
 
@@ -15,7 +17,7 @@
     <div>
       <input type="number" 
       name="valor" 
-      placeholder="digite um valor">
+      placeholder="Digite um valor">
   </div>
 
   <div class="item">
